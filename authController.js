@@ -22,13 +22,13 @@ class authController {
       await user.save();
       res.json({
         status: true,
-        message: "You have successfully registered!"
+        message: "Вы успешно зарегистрировались!"
       });
     } catch (e) {
       console.log(e);
       res.status(400).json({
         status: false,
-        message: 'Registration error'
+        message: 'Ошибка регистрации'
       });
     }
   }
@@ -42,7 +42,7 @@ class authController {
       if (!user) {
         return res.status(400).json({
           status: false,
-          message: "User is not found!"
+          message: "Пользователь не найден!"
         });
       }
       const validPassword = bcrypt.compareSync(pass, user.pass);
@@ -50,30 +50,30 @@ class authController {
       if (!validPassword) {
         return res.status(400).json({
           status: false,
-          message: "Wrong password, try again!"
+          message: "Неправильный пароль, повторите снова!"
         });
       }
       // const token = generateAccessToken(user);
       res.json({
         status: true,
-        message: "You are successfully logged in!",
+        message: "Вы успешно прошли авторизацию на сайт интернет-магазин одежды!",
         
       });
     } catch (e) {
       console.log(e);
       res.status(400).json({
         status: false,
-        message: 'Login error'
+        message: 'Ошибка логина'
       });
     }
   }
 
   async getWork(req, res) {
     try {
-      res.json("server work")
+      res.json("Сервер работает")
     } catch (e) {
       console.log(e);
-      res.status(400).json({ message: 'Work error' });
+      res.status(400).json({ message: 'Сервер не работает' });
     }
   }
 }
